@@ -7,32 +7,60 @@
 
 @theme {
     --font-sans:
-        "Instrument Sans", ui-sans-serif, system-ui, sans-serif,
-        "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
-        "Noto Color Emoji";
+        "Nunito Sans", Arial, Helvetica, sans-serif;
 
-    --color-zinc-50: #fafafa;
-    --color-zinc-100: #f5f5f5;
-    --color-zinc-200: #e5e5e5;
-    --color-zinc-300: #d4d4d4;
-    --color-zinc-400: #a3a3a3;
-    --color-zinc-500: #737373;
-    --color-zinc-600: #525252;
-    --color-zinc-700: #404040;
-    --color-zinc-800: #262626;
-    --color-zinc-900: #171717;
-    --color-zinc-950: #0a0a0a;
+    /* Brand Color Palette */
+    --color-brand-dark: #23364b;
+    --color-brand-darker: #0d425d;
+    --color-brand-teal: #6ac1a6;
+    
+    /* Light Mode - Teal Shades (Based on #6ac1a6) */
+    --color-teal-50: #f0fdf9;
+    --color-teal-100: #ccf0e4;
+    --color-teal-200: #99e1ca;
+    --color-teal-300: #6ac1a6;
+    --color-teal-400: #4db39a;
+    --color-teal-500: #3a9678;
+    --color-teal-600: #2d7a60;
+    --color-teal-700: #235d50;
+    --color-teal-800: #1a4639;
+    --color-teal-900: #0f2e25;
+    
+    /* Light Mode - Primary Blues (Light variants of #23364b) */
+    --color-primary-50: #f1f5f9;
+    --color-primary-100: #dde6f0;
+    --color-primary-200: #bbd3e0;
+    --color-primary-300: #8ab3cc;
+    --color-primary-400: #5892b8;
+    --color-primary-500: #23364b;
+    --color-primary-600: #1f2e40;
+    --color-primary-700: #1a2635;
+    --color-primary-800: #0f1820;
+    --color-primary-900: #0a0f17;
+    
+    /* Dark Mode - Dark Blues (Based on #0d425d) */
+    --color-slate-50: #f8fafc;
+    --color-slate-100: #f1f5f9;
+    --color-slate-200: #e2e8f0;
+    --color-slate-300: #cbd5e1;
+    --color-slate-400: #94a3b8;
+    --color-slate-500: #64748b;
+    --color-slate-600: #475569;
+    --color-slate-700: #334155;
+    --color-slate-800: #1e293b;
+    --color-slate-900: #0f172a;
+    --color-slate-950: #020617;
 
-    --color-accent: var(--color-neutral-800);
-    --color-accent-content: var(--color-neutral-800);
-    --color-accent-foreground: var(--color-white);
+    --color-accent: var(--color-teal-500);
+    --color-accent-content: #ffffff;
+    --color-accent-foreground: var(--color-teal-500);
 }
 
 @layer theme {
     .dark {
-        --color-accent: var(--color-white);
-        --color-accent-content: var(--color-white);
-        --color-accent-foreground: var(--color-neutral-800);
+        --color-accent: var(--color-teal-300);
+        --color-accent-content: var(--color-brand-darker);
+        --color-accent-foreground: var(--color-teal-300);
     }
 }
 
@@ -42,6 +70,53 @@
     ::before,
     ::backdrop,
     ::file-selector-button {
-        border-color: var(--color-gray-200, currentColor);
+        border-color: var(--color-primary-200, currentColor);
+    }
+    
+    .dark *,
+    .dark ::after,
+    .dark ::before,
+    .dark ::backdrop,
+    .dark ::file-selector-button {
+        border-color: var(--color-slate-700, currentColor);
+    }
+    
+    html {
+        @apply scroll-smooth;
+    }
+    
+    body {
+        @apply bg-gradient-to-br from-primary-50 via-white to-teal-50 dark:from-brand-darker dark:via-slate-900 dark:to-slate-800;
+    }
+
+    h1{
+        font: 650 2rem/1.2 var(--font-sans);
+        text-wrap: balance;
+        letter-spacing: -0.02em;
+    }
+}
+
+@layer components {
+    /* Modern card styling */
+    .card-base {
+        @apply rounded-xl border border-primary-200 dark:border-slate-700 bg-white dark:bg-slate-800 shadow-sm hover:shadow-md transition-shadow duration-200;
+    }
+    
+    /* Navigation styling */
+    .nav-link-active {
+        @apply bg-teal-100 dark:bg-teal-900/30 text-primary-900 dark:text-teal-300 font-semibold;
+    }
+    
+    .nav-link {
+        @apply text-primary-700 dark:text-slate-300 hover:bg-teal-50 dark:hover:bg-slate-700 transition-colors;
+    }
+    
+    /* Button styling */
+    .btn-primary {
+        @apply bg-teal-500 hover:bg-teal-600 text-white font-semibold py-2 px-4 rounded-lg transition-colors;
+    }
+    
+    .btn-secondary {
+        @apply bg-primary-100 hover:bg-primary-200 dark:bg-slate-700 dark:hover:bg-slate-600 text-primary-900 dark:text-slate-100 font-semibold py-2 px-4 rounded-lg transition-colors;
     }
 }
