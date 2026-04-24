@@ -1,7 +1,30 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="dark">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         @include('partials.head')
+        <script>
+            // Initialize theme BEFORE page renders to prevent flash
+            (function() {
+                // 1. Check user preference in localStorage
+                const savedTheme = localStorage.getItem('theme');
+                
+                if (savedTheme) {
+                    // Use saved preference
+                    if (savedTheme === 'dark') {
+                        document.documentElement.classList.add('dark');
+                    } else {
+                        document.documentElement.classList.remove('dark');
+                    }
+                } else {
+                    // 2. Fall back to system preference
+                    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                        document.documentElement.classList.add('dark');
+                    } else {
+                        document.documentElement.classList.remove('dark');
+                    }
+                }
+            })();
+        </script>
     </head>
     <body class="min-h-screen bg-neutral-100 antialiased dark:bg-linear-to-b dark:from-neutral-950 dark:to-neutral-900">
         <div class="bg-muted flex min-h-svh flex-col items-center justify-center gap-6 p-6 md:p-10">

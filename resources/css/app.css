@@ -54,6 +54,7 @@
     --color-accent: var(--color-teal-500);
     --color-accent-content: #ffffff;
     --color-accent-foreground: var(--color-teal-500);
+
 }
 
 @layer theme {
@@ -118,5 +119,12 @@
     
     .btn-secondary {
         @apply bg-primary-100 hover:bg-primary-200 dark:bg-slate-700 dark:hover:bg-slate-600 text-primary-900 dark:text-slate-100 font-semibold py-2 px-4 rounded-lg transition-colors;
+    }
+}
+
+@layer utilities {
+    .bg-preset-gradient-light {
+        background:radial-gradient(circle at 0% 0%, #f6fcff, #e4f7fd);
+
     }
 }

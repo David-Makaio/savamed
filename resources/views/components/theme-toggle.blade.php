@@ -16,33 +16,28 @@
 </button>
 
 <script>
-    // Initialize theme on page load
-    (function() {
-        const theme = localStorage.getItem('theme') || 'light';
-        const html = document.documentElement;
+    function attachThemeToggleListener() {
+        const themeToggle = document.getElementById('theme-toggle');
+        if (!themeToggle) return;
         
-        if (theme === 'dark') {
-            html.classList.add('dark');
-        } else {
-            html.classList.remove('dark');
-        }
-    })();
-
-    // Theme toggle button handler
-    const themeToggle = document.getElementById('theme-toggle');
-    if (themeToggle) {
-        themeToggle.addEventListener('click', function() {
+        // Remove any existing listeners to prevent duplicates
+        const newToggle = themeToggle.cloneNode(true);
+        themeToggle.parentNode.replaceChild(newToggle, themeToggle);
+        
+        newToggle.addEventListener('click', function() {
             const html = document.documentElement;
-            const currentTheme = localStorage.getItem('theme') || 'light';
-            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-            
-            localStorage.setItem('theme', newTheme);
-            
-            if (newTheme === 'dark') {
-                html.classList.add('dark');
-            } else {
-                html.classList.remove('dark');
-            }
+            const isDark = html.classList.toggle('dark');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
         });
     }
+
+    // Attach listener on DOM ready
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', attachThemeToggleListener);
+    } else {
+        attachThemeToggleListener();
+    }
+
+    // Re-attach listener on Livewire navigation
+    document.addEventListener('livewire:navigated', attachThemeToggleListener);
 </script>

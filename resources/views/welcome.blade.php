@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="id">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>{{ __('Savamed') }} - {{ config('app.name', 'Laravel') }}</title>
+        <title>{{ __('Savamed') }} - Solusi Kelola Apotek Jadi Lebih Mudah</title>
 
         <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -13,7 +13,7 @@
         <meta name="apple-mobile-web-app-title" content="Savamed" />
         <link rel="manifest" href="/site.webmanifest" />
 
-        <!-- Fonts -->
+        <!-- Fonts: Menggunakan Inter untuk keterbacaan yang maksimal -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -21,254 +21,219 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
         
         <style>
-            * {
-                font-family: 'Inter', sans-serif;
+            :root {
+                --accent-mint: #6ee7d8;
+                --charcoal: #1a1a1a;
+                --slate: #64748b;
             }
+            .accent-mint { color: var(--accent-mint); }
+            .bg-accent-mint { background-color: var(--accent-mint); }
+            .text-charcoal { color: var(--charcoal); }
+            .text-slate { color: var(--slate); }
+            .border-accent { border-color: var(--accent-mint); }
             
-            .accent-mint {
-                color: #6ee7d8;
-            }
-            
-            .bg-accent-mint {
-                background-color: #6ee7d8;
-            }
-            
-            .text-charcoal {
-                color: #1a1a1a;
-            }
-            
-            .text-slate {
-                color: #64748b;
-            }
-            
-            .border-accent {
-                border-color: #6ee7d8;
-            }
-            
-            .hover-accent:hover {
-                color: #6ee7d8;
-                border-color: #6ee7d8;
-            }
+            .transition-smooth { transition: all 0.3s ease; }
+            .hover-scale:hover { transform: translateY(-4px); }
         </style>
     </head>
-    <body class="bg-white text-charcoal" style="font-family: 'Inter', sans-serif;">
-        <!-- Navigation -->
-        {{-- <nav class="fixed w-full bg-white z-50 border-b border-gray-100">
-            <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-                <div class="text-2xl font-700 tracking-tight text-charcoal">
-                    <x-app-logo-icon />SAVAMED
-                </div>
-                <div class="flex gap-8 items-center">
-                    <a href="{{ route('login') }}" class="text-slate hover:accent-mint transition-colors text-sm font-500">Login</a>
-                    <a href="{{ route('home') }}" class="bg-accent-mint text-charcoal px-6 py-2 rounded text-sm font-600 hover:opacity-90 transition-opacity">Get Started</a>
-                </div>
-            </div>
-        </nav> --}}
+    <body class="bg-white text-charcoal font-sans antialiased">
+
         <x-header/>
 
-        <main class="bg-white">
-            <!-- Hero Section -->
-            <section class="min-h-screen pt-32 pb-24 px-6 flex items-center">
-                <div class="max-w-7xl mx-auto w-full">
+        <main>
+            <section class="min-h-svh pt-32 pb-20 px-6 flex items-center bg-preset-gradient-light">
+                <div class="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <h1 class="text-[clamp(2.3rem,1.625rem+2.698vw,4rem)] leading-[1.13] mb-2">
+                            Kelola Stok Apotek <br/> <span class="text-teal-500">Jadi Lebih Cepat</span>
+                        </h1>
 
-                    <!-- Headline -->
-                    <h1 class="text-6xl md:text-7xl font-700 leading-tight text-charcoal mb-8 max-w-3xl" style="letter-spacing: -0.02em;">
-                        Efficient Pharmacy Organization with Savamed
-                    </h1>
+                        <p class="text-[clamp(0.85rem,0.722rem+0.511vw,1.172rem)] text-slate max-w-xl mb-10 font-400 leading-relaxed">
+                            Bosan dengan hitung stok manual? Savamed membantu Anda mengatur inventaris secara otomatis, mencegah stok kosong, dan memantau kedaluwarsa hanya dalam satu layar.
+                        </p>
 
-                    <!-- Subheading -->
-                    <p class="text-lg md:text-xl text-slate max-w-2xl mb-12 font-400 leading-relaxed">
-                        Optimize your inventory with data-driven precision. Streamline operations, reduce errors, and maximize efficiency.
-                    </p>
-
-                    <!-- CTA Buttons -->
-                    <div class="flex flex-col sm:flex-row gap-6">
-                        <a href="{{ route('login') }}" class="bg-accent-mint text-charcoal px-8 py-3 rounded font-600 text-center hover:opacity-90 transition-opacity">
-                            Start Free Demo
-                        </a>
-                        <a href="{{ route('home') }}" class="border-2 border-charcoal text-charcoal px-8 py-3 rounded font-600 text-center hover:bg-gray-50 transition-colors">
-                            Learn More
-                        </a>
+                        <!-- Tombol Aksi yang Menarik -->
+                        <div class="flex flex-col sm:flex-row gap-5">
+                            <a href="{{ route('login') }}" class="bg-accent-mint text-charcoal px-10 py-4 rounded-lg font-700 text-center shadow-lg shadow-teal-100 hover:shadow-xl hover:opacity-90 transition-smooth text-lg">
+                                Coba Gratis Sekarang
+                            </a>
+                            <a href="{{ route('home') }}" class="border-2 border-charcoal text-charcoal px-10 py-4 rounded-lg font-700 text-center hover:bg-charcoal hover:text-white transition-smooth text-lg">
+                                Konsultasi Dulu
+                            </a>
+                        </div>
+                        
+                        <p class="mt-6 text-sm text-slate flex items-center gap-2">
+                            <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"></path></svg>
+                            Tidak perlu kartu kredit. Setup hanya 5 menit.
+                        </p>
+                    </div>
+                    
+                    <!-- Area Visual (Placeholder Image) -->
+                    <div class="hidden lg:block relative">
+                        <div class="bg-teal-50 rounded-2xl p-4 border border-teal-100 shadow-2xl">
+                             <div class="aspect-video bg-white rounded-xl shadow-inner flex items-center justify-center border border-gray-100">
+                                 <span class="text-slate font-500">[Gambar Dashboard Savamed yang Bersih]</span>
+                             </div>
+                        </div>
                     </div>
                 </div>
             </section>
 
-            <!-- Features Grid Section -->
-            <section class="py-24 px-6 bg-white">
+            <!-- Features Grid: Fokus pada Manfaat Langsung -->
+            <section class="py-24 px-6 bg-white border-t border-gray-100">
                 <div class="max-w-7xl mx-auto">
-                    <!-- Section Header -->
-                    <div class="mb-20">
-                        <p class="text-sm font-600 accent-mint uppercase tracking-wide mb-4">Why Savamed</p>
-                        <h2 class="text-4xl md:text-5xl font-700 text-charcoal max-w-2xl leading-tight" style="letter-spacing: -0.02em;">
-                            Pharmacy Management Redefined
+                    <div class="text-center mb-20">
+                        <p class="text-sm font-700 accent-mint uppercase tracking-[0.2em] mb-4">Fitur Andalan</p>
+                        <h2 class="text-4xl md:text-5xl font-800 text-charcoal leading-tight" style="letter-spacing: -0.02em;">
+                            Segalanya Lebih Teratur <br/> Bersama Savamed
                         </h2>
                     </div>
 
-                    <!-- Features Grid -->
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        <!-- Feature 1 -->
-                        <div class="p-8 border border-gray-200 rounded hover:border-accent-mint transition-colors">
-                            <div class="w-12 h-12 bg-gray-100 rounded mb-6 flex items-center justify-center">
-                                <svg class="w-6 h-6 accent-mint" fill="currentColor" viewBox="0 0 24 24">
-                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm3.5-9c.83 0 1.5-.67 1.5-1.5S16.33 8 15.5 8 14 8.67 14 9.5s.67 1.5 1.5 1.5zm-7 0c.83 0 1.5-.67 1.5-1.5S9.33 8 8.5 8 7 8.67 7 9.5 7.67 11 8.5 11zm3.5 6.5c2.33 0 4.31-1.46 5.11-3.5H6.89c.8 2.04 2.78 3.5 5.11 3.5z"/>
+                        <!-- Fitur 1 -->
+                        <div class="group p-8 bg-white border border-gray-100 rounded-2xl hover:border-teal-300 transition-smooth hover:shadow-xl shadow-sm">
+                            <div class="w-14 h-14 bg-teal-50 rounded-xl mb-6 flex items-center justify-center group-hover:bg-accent-mint transition-smooth">
+                                <svg class="w-7 h-7 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path>
                                 </svg>
                             </div>
-                            <h3 class="text-xl font-700 text-charcoal mb-3">Smart Tracking</h3>
-                            <p class="text-slate font-400 leading-relaxed">
-                                Monitor pharmaceutical inventory from warehouse to patient, with real-time visibility and precision.
+                            <h3 class="text-2xl font-700 text-charcoal mb-4">Stok Anti-Selisih</h3>
+                            <p class="text-slate leading-relaxed">
+                                Pantau pergerakan stok secara otomatis. Setiap obat yang masuk dan keluar tercatat rapi tanpa takut ada data yang hilang.
                             </p>
                         </div>
 
-                        <!-- Feature 2 -->
-                        <div class="p-8 border border-gray-200 rounded hover:border-accent-mint transition-colors">
-                            <div class="w-12 h-12 bg-gray-100 rounded mb-6 flex items-center justify-center">
-                                <svg class="w-6 h-6 accent-mint" fill="currentColor" viewBox="0 0 24 24">
-                                    <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14zm-5.04-6.71l-2.75 3.54-1.3-1.54c-.4-.48-1.03-.48-1.43 0-.4.48-.4 1.26 0 1.74l2 2.39c.4.48 1.03.48 1.43 0l3.96-4.83c.4-.48.4-1.26 0-1.74-.4-.48-1.03-.48-1.43 0z"/>
+                        <!-- Fitur 2 -->
+                        <div class="group p-8 bg-white border border-gray-100 rounded-2xl hover:border-teal-300 transition-smooth hover:shadow-xl shadow-sm">
+                            <div class="w-14 h-14 bg-teal-50 rounded-xl mb-6 flex items-center justify-center group-hover:bg-accent-mint transition-smooth">
+                                <svg class="w-7 h-7 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                                 </svg>
                             </div>
-                            <h3 class="text-xl font-700 text-charcoal mb-3">Instant Reporting</h3>
-                            <p class="text-slate font-400 leading-relaxed">
-                                Generate comprehensive reports and analyze trends in a single click. Data-driven decision making simplified.
+                            <h3 class="text-2xl font-700 text-charcoal mb-4">Ingat Kedaluwarsa</h3>
+                            <p class="text-slate leading-relaxed">
+                                Dapatkan notifikasi otomatis sebelum produk kedaluwarsa. Lindungi reputasi apotek Anda dan kurangi kerugian stok terbuang.
                             </p>
                         </div>
 
-                        <!-- Feature 3 -->
-                        <div class="p-8 border border-gray-200 rounded hover:border-accent-mint transition-colors">
-                            <div class="w-12 h-12 bg-gray-100 rounded mb-6 flex items-center justify-center">
-                                <svg class="w-6 h-6 accent-mint" fill="currentColor" viewBox="0 0 24 24">
-                                    <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.72-7 8.77V12H5V6.3l7-3.11v8.8z"/>
+                        <!-- Fitur 3 -->
+                        <div class="group p-8 bg-white border border-gray-100 rounded-2xl hover:border-teal-300 transition-smooth hover:shadow-xl shadow-sm">
+                            <div class="w-14 h-14 bg-teal-50 rounded-xl mb-6 flex items-center justify-center group-hover:bg-accent-mint transition-smooth">
+                                <svg class="w-7 h-7 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
                                 </svg>
                             </div>
-                            <h3 class="text-xl font-700 text-charcoal mb-3">Cloud Security</h3>
-                            <p class="text-slate font-400 leading-relaxed">
-                                Enterprise-grade encryption and security. Your pharmacy data is protected and accessible anytime, anywhere.
-                            </p>
-                        </div>
-
-                        <!-- Feature 4 -->
-                        <div class="p-8 border border-gray-200 rounded hover:border-accent-mint transition-colors">
-                            <div class="w-12 h-12 bg-gray-100 rounded mb-6 flex items-center justify-center">
-                                <svg class="w-6 h-6 accent-mint" fill="currentColor" viewBox="0 0 24 24">
-                                    <path d="M15.5 1h-8C6.12 1 5 2.12 5 3.5v17C5 21.88 6.12 23 7.5 23h8c1.38 0 2.5-1.12 2.5-2.5v-17C18 2.12 16.88 1 15.5 1zm-4 21c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm4.5-4H7V4h9v14z"/>
-                                </svg>
-                            </div>
-                            <h3 class="text-xl font-700 text-charcoal mb-3">Intuitive Interface</h3>
-                            <p class="text-slate font-400 leading-relaxed">
-                                Designed for pharmacy staff. Minimal training required. Clean, logical interface that works intuitively.
-                            </p>
-                        </div>
-
-                        <!-- Feature 5 -->
-                        <div class="p-8 border border-gray-200 rounded hover:border-accent-mint transition-colors">
-                            <div class="w-12 h-12 bg-gray-100 rounded mb-6 flex items-center justify-center">
-                                <svg class="w-6 h-6 accent-mint" fill="currentColor" viewBox="0 0 24 24">
-                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-                                </svg>
-                            </div>
-                            <h3 class="text-xl font-700 text-charcoal mb-3">Expiry Management</h3>
-                            <p class="text-slate font-400 leading-relaxed">
-                                Automated early warnings for approaching expiration dates. Never miss critical stock rotation alerts.
-                            </p>
-                        </div>
-
-                        <!-- Feature 6 -->
-                        <div class="p-8 border border-gray-200 rounded hover:border-accent-mint transition-colors">
-                            <div class="w-12 h-12 bg-gray-100 rounded mb-6 flex items-center justify-center">
-                                <svg class="w-6 h-6 accent-mint" fill="currentColor" viewBox="0 0 24 24">
-                                    <path d="M9 11H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2zm2-7h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11z"/>
-                                </svg>
-                            </div>
-                            <h3 class="text-xl font-700 text-charcoal mb-3">Scheduled Sync</h3>
-                            <p class="text-slate font-400 leading-relaxed">
-                                Automatic inventory synchronization across all locations. Keep every pharmacy unit perfectly aligned.
+                            <h3 class="text-2xl font-700 text-charcoal mb-4">Laporan Siap Pakai</h3>
+                            <p class="text-slate leading-relaxed">
+                                Tidak perlu pusing bikin grafik Excel. Lihat omzet, produk terlaris, dan laba rugi secara instan kapan saja.
                             </p>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <!-- How It Works Section -->
-            <section class="py-24 px-6 bg-white">
-                <div class="max-w-7xl mx-auto">
-                    <p class="text-sm font-600 accent-mint uppercase tracking-wide mb-4">Simple Process</p>
-                    <h2 class="text-4xl md:text-5xl font-700 text-charcoal max-w-2xl leading-tight mb-16" style="letter-spacing: -0.02em;">
-                        Get Started in Three Steps
-                    </h2>
+            <!-- How It Works Section: Sederhana & Mengajak -->
+            <section class="py-24 px-6 bg-gray-50 overflow-hidden">
+                <div class="max-w-7xl mx-auto relative">
+                    <div class="mb-16">
+                        <p class="text-sm font-700 accent-mint uppercase tracking-widest mb-4">Langkah Mudah</p>
+                        <h2 class="text-4xl md:text-5xl font-800 text-charcoal leading-tight">
+                            Hanya Butuh 3 Langkah <br/> Untuk Transformasi
+                        </h2>
+                    </div>
 
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-12 relative">
                         <!-- Step 1 -->
-                        <div class="relative">
-                            <div class="flex items-center justify-center w-16 h-16 rounded-full bg-accent-mint text-charcoal font-700 text-xl mb-8">01</div>
-                            <h3 class="text-2xl font-700 text-charcoal mb-4">Connect</h3>
-                            <p class="text-slate leading-relaxed">Link your current inventory data and existing pharmacy management systems to Savamed effortlessly.</p>
+                        <div class="bg-white p-10 rounded-2xl shadow-sm border border-gray-100 hover-scale transition-smooth">
+                            <div class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-accent-mint text-charcoal font-800 text-lg mb-6 shadow-md">1</div>
+                            <h3 class="text-2xl font-700 text-charcoal mb-4">Daftar Akun</h3>
+                            <p class="text-slate leading-relaxed">Cukup masukkan alamat email dan nama apotek. Akun Anda siap dalam hitungan detik.</p>
                         </div>
 
                         <!-- Step 2 -->
-                        <div class="relative">
-                            <div class="flex items-center justify-center w-16 h-16 rounded-full bg-accent-mint text-charcoal font-700 text-xl mb-8">02</div>
-                            <h3 class="text-2xl font-700 text-charcoal mb-4">Organize</h3>
-                            <p class="text-slate leading-relaxed">Manage inventory digitally with our intuitive interface. Update stock, track movements, and maintain accuracy.</p>
+                        <div class="bg-white p-10 rounded-2xl shadow-sm border border-gray-100 hover-scale transition-smooth">
+                            <div class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-accent-mint text-charcoal font-800 text-lg mb-6 shadow-md">2</div>
+                            <h3 class="text-2xl font-700 text-charcoal mb-4">Input Data Stok</h3>
+                            <p class="text-slate leading-relaxed">Unggah daftar produk Anda dengan Excel atau masukkan satu per satu melalui antarmuka yang simpel.</p>
                         </div>
 
                         <!-- Step 3 -->
-                        <div class="relative">
-                            <div class="flex items-center justify-center w-16 h-16 rounded-full bg-accent-mint text-charcoal font-700 text-xl mb-8">03</div>
-                            <h3 class="text-2xl font-700 text-charcoal mb-4">Optimize</h3>
-                            <p class="text-slate leading-relaxed">Access actionable insights and analytics to make data-driven decisions that reduce costs and improve efficiency.</p>
+                        <div class="bg-white p-10 rounded-2xl shadow-sm border border-gray-100 hover-scale transition-smooth">
+                            <div class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-accent-mint text-charcoal font-800 text-lg mb-6 shadow-md">3</div>
+                            <h3 class="text-2xl font-700 text-charcoal mb-4">Pantau & Tumbuh</h3>
+                            <p class="text-slate leading-relaxed">Gunakan wawasan data untuk membeli stok yang tepat dan hemat lebih banyak waktu untuk pasien Anda.</p>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <!-- Stats Section -->
-            <section class="py-24 px-6 bg-gray-50">
+            <!-- Stats Section: Bukti Sosial -->
+            <section class="py-24 px-6 bg-charcoal text-white">
                 <div class="max-w-7xl mx-auto">
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-16 text-center">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
                         <div>
-                            <div class="text-5xl font-700 accent-mint mb-3">500+</div>
-                            <p class="text-slate text-lg">Pharmacies Optimized</p>
+                            <div class="text-6xl font-800 accent-mint mb-4">500+</div>
+                            <p class="text-gray-400 text-lg uppercase tracking-widest font-500">Apotek Bergabung</p>
                         </div>
                         <div>
-                            <div class="text-5xl font-700 accent-mint mb-3">70%</div>
-                            <p class="text-slate text-lg">Time Saved on Operations</p>
+                            <div class="text-6xl font-800 accent-mint mb-4">12jt+</div>
+                            <p class="text-gray-400 text-lg uppercase tracking-widest font-500">Stok Terkelola</p>
                         </div>
                         <div>
-                            <div class="text-5xl font-700 accent-mint mb-3">99.9%</div>
-                            <p class="text-slate text-lg">System Uptime Guarantee</p>
+                            <div class="text-6xl font-800 accent-mint mb-4">24/7</div>
+                            <p class="text-gray-400 text-lg uppercase tracking-widest font-500">Dukungan Siap Bantu</p>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <!-- Final CTA Section -->
-            <section class="py-24 px-6 bg-white">
-                <div class="max-w-4xl mx-auto text-center">
-                    <h2 class="text-5xl md:text-6xl font-700 text-charcoal mb-8 leading-tight" style="letter-spacing: -0.02em;">
-                        Ready to Transform Your Pharmacy?
+            <!-- Final CTA: Mendesak & Ramah -->
+            <section class="py-32 px-6 bg-white relative overflow-hidden">
+                 <!-- Background dekorasi -->
+                <div class="absolute top-0 right-0 -translate-y-1/2 translate-x-1/4 w-96 h-96 bg-teal-50 rounded-full blur-3xl opacity-50"></div>
+                <div class="absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/4 w-96 h-96 bg-mint-50 rounded-full blur-3xl opacity-50"></div>
+
+                <div class="max-w-4xl mx-auto text-center relative z-10">
+                    <h2 class="text-5xl md:text-6xl font-800 text-charcoal mb-8 leading-tight tracking-tight">
+                        Waktunya Beralih ke <br/> Manajemen yang Lebih Pintar
                     </h2>
                     <p class="text-xl text-slate mb-12 max-w-2xl mx-auto leading-relaxed">
-                        Join hundreds of pharmacies already optimizing their operations with Savamed. Schedule your personalized demo today.
+                        Sudah saatnya Anda meninggalkan cara lama. Bergabunglah dengan ratusan rekan apoteker lainnya yang sudah hidup lebih tenang bersama Savamed.
                     </p>
                     <div class="flex flex-col sm:flex-row gap-6 justify-center">
-                        <a href="{{ route('login') }}" class="bg-accent-mint text-charcoal px-10 py-4 rounded font-700 text-center hover:opacity-90 transition-opacity text-lg">
-                            Schedule Demo
+                        <a href="{{ route('login') }}" class="bg-accent-mint text-charcoal px-12 py-5 rounded-xl font-800 text-center shadow-xl shadow-teal-100 hover:shadow-2xl transition-smooth text-xl">
+                            Coba Gratis Sekarang
                         </a>
-                        <a href="{{ route('home') }}" class="border-2 border-charcoal text-charcoal px-10 py-4 rounded font-700 text-center hover:bg-gray-50 transition-colors text-lg">
-                            Contact Sales
+                        <a href="{{ route('home') }}" class="border-2 border-charcoal text-charcoal px-12 py-5 rounded-xl font-800 text-center hover:bg-gray-50 transition-smooth text-xl">
+                            Tanya Dulu, Gratis
                         </a>
                     </div>
+                    <p class="mt-8 text-sm text-slate">Bantuan aktivasi? Hubungi tim support kami kapan saja.</p>
                 </div>
             </section>
 
-            <!-- Footer -->
-            <footer class="py-12 px-6 bg-charcoal text-white border-t border-gray-200">
-                <div class="max-w-7xl mx-auto flex justify-between items-center">
-                    <div class="text-lg font-700 tracking-tight">
-                        SAVAMED
+            <!-- Footer: Rapi & Professional -->
+            <footer class="py-16 px-6 bg-white border-t border-gray-100">
+                <div class="max-w-7xl mx-auto">
+                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-8 mb-12">
+                        <div class="text-2xl font-800 tracking-tighter text-charcoal">
+                            SAVA<span class="text-teal-500">MED</span>
+                        </div>
+                        <nav class="flex flex-wrap gap-8 text-sm font-600 text-slate">
+                            <a href="#" class="hover:text-charcoal transition-colors">Beranda</a>
+                            <a href="#" class="hover:text-charcoal transition-colors">Fitur</a>
+                            <a href="#" class="hover:text-charcoal transition-colors">Harga</a>
+                            <a href="#" class="hover:text-charcoal transition-colors">Kontak</a>
+                        </nav>
                     </div>
-                    <p class="text-sm text-gray-400">
-                        © 2026 Savamed. All rights reserved. Efficient pharmacy management for modern pharmacies.
-                    </p>
+                    <div class="pt-8 border-t border-gray-50 flex flex-col md:flex-row justify-between items-center gap-4">
+                        <p class="text-sm text-gray-400">
+                            © 2026 Savamed. Dibuat dengan ❤️ untuk kemajuan apotek di Indonesia.
+                        </p>
+                        <div class="flex gap-6 text-gray-400">
+                             <!-- Media sosial icons could go here -->
+                        </div>
+                    </div>
                 </div>
             </footer>
         </main>

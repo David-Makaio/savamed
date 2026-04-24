@@ -1,12 +1,4 @@
 <x-layouts::app :title="__('Dashboard')">
-    <x-slot name="header">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h1 class="text-3xl font-bold text-primary-900 dark:text-white mb-2">
-                {{ __('Pharmacy Dashboard') }}
-            </h1>
-            <p class="text-zinc-600 dark:text-zinc-400">{{ __('Welcome back! Monitor and manage your inventory with ease.') }}</p>
-        </div>
-    </x-slot>
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
@@ -19,7 +11,7 @@
                         <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10l-2 1m0 0l-2-1m2 1v2.5M20 7l-2 1m2-1l-2-1m2 1v2.5M14 4l-2-1-2 1m2-1v2.5M8 7l-2 1m2-1l-2-1m2 1v2.5"></path></svg>
                     </div>
                     <div>
-                        <h3 class="text-2xl font-bold text-primary-900 dark:text-white">{{ __('Welcome back, Admin!') }}</h3>
+                        <h1 class="text-2xl font-bold text-primary-900 dark:text-white">{{ __('Welcome back, Admin!') }}</h1>
                         <p class="text-primary-600 dark:text-slate-400 text-sm">{{ __('You\'re all set to manage your pharmacy inventory') }}</p>
                     </div>
                 </div>
