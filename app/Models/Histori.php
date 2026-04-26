@@ -10,6 +10,7 @@ class Histori extends Model
 
     protected $fillable = [
         'barang_id',
+        'id_apotek',
         'aksi',
         'perubahan_stok',
         'stok_akhir',

@@ -48,7 +48,7 @@ class BarangObserver
     {
         \App\Models\Histori::create([
             'barang_id' => $barang->id,
-            'aksi' => 'Soft Deleted',
+            'aksi' => 'Deleted',
             'perubahan_stok' => 0,
             'stok_akhir' => $barang->stok,
             'user_name' => auth()->user()?->name ?? 'System',

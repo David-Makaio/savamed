@@ -51,9 +51,17 @@
     --color-slate-900: #0f172a;
     --color-slate-950: #020617;
 
-    --color-accent: var(--color-teal-500);
+    --color-mint: #6ee7d8;
+    --color-charcoal: #1a1a1a;
+    --color-slate: #64748b;
+            
+    
+    --color-accent: var(--color-mint);
     --color-accent-content: #ffffff;
     --color-accent-foreground: var(--color-teal-500);
+
+    --gradient-start: #f6fcff;
+    --gradient-stop: #e4f7fd;
 
 }
 
@@ -62,6 +70,9 @@
         --color-accent: var(--color-teal-300);
         --color-accent-content: var(--color-brand-darker);
         --color-accent-foreground: var(--color-teal-300);
+
+        --gradient-start: #0f172a;
+        --gradient-stop: #020617;
     }
 }
 
@@ -94,6 +105,7 @@
         font: 650 2rem/1.2 var(--font-sans);
         text-wrap: balance;
         letter-spacing: -0.02em;
+        @apply text-primary-900 dark:text-white;
     }
 }
 
@@ -123,8 +135,9 @@
 }
 
 @layer utilities {
-    .bg-preset-gradient-light {
-        background:radial-gradient(circle at 0% 0%, #f6fcff, #e4f7fd);
-
+    .bg-preset-gradient {
+        background:radial-gradient(circle at 0% 0%, var(--gradient-start), var(--gradient-stop));
     }
+
+    .transition-smooth { transition: all 0.3s ease; }
 }

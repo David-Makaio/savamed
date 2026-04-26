@@ -1,14 +1,21 @@
 <x-layouts::auth :title="__('Log in')">
     <div class="flex flex-col gap-6">
-        <x-auth-header :title="__('Log in to your account')" :description="__('Enter your email and password below to log in')" />
+        <x-auth-header 
+            :title="__('Welcome Back')" 
+            :description="__('Log in to manage your pharmacy inventory')" 
+        />
 
-        <!-- Session Status -->
         <x-auth-session-status class="text-center" :status="session('status')" />
+
+        @if ($errors->has('verification'))
+            <div class="p-3 text-sm text-amber-700 bg-amber-50 border border-amber-200 rounded-lg">
+                {{ $errors->first('verification') }}
+            </div>
+        @endif
 
         <form method="POST" action="{{ route('login.store') }}" class="flex flex-col gap-6">
             @csrf
 
-            <!-- Email Address -->
             <div>
                 <label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">{{ __('Email address') }}</label>
                 <input
@@ -27,7 +34,6 @@
                 @enderror
             </div>
 
-            <!-- Password -->
             <div class="relative">
                 <label for="password" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">{{ __('Password') }}</label>
                 <input
@@ -42,7 +48,7 @@
 
                 @if (Route::has('password.request'))
                     <a class="absolute top-0 text-sm end-0 text-blue-600 hover:text-blue-700" href="{{ route('password.request') }}" wire:navigate>
-                        {{ __('Forgot your password?') }}
+                        {{ __('Forgot password?') }}
                     </a>
                 @endif
                 
@@ -51,18 +57,16 @@
                 @enderror
             </div>
 
-            <!-- Remember Me -->
             <label class="flex items-center gap-2">
                 <input
                     type="checkbox"
                     name="remember"
-                    @if(old('remember')) checked @endif
                     class="rounded border-gray-300 text-blue-600 focus:ring-blue-500"
                 />
                 <span class="text-sm text-gray-700 dark:text-gray-300">{{ __('Remember me') }}</span>
             </label>
 
-            <button type="submit" data-test="login-button" class="w-full px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors">
+            <button type="submit" class="w-full px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors shadow-sm">
                 {{ __('Log in') }}
             </button>
         </form>

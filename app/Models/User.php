@@ -46,6 +46,6 @@ class User extends Authenticatable
 
     public function apotek()
     {
-        return $this->belongsTo(Apotek::class, 'pharmacy_id');
+        return $this->belongsTo(Apotek::class, 'id_apotek');
     }
 }

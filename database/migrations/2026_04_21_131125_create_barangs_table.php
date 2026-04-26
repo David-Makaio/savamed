@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('barangs', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('kategori_id')->constrained('kategoris')->onDelete('cascade');
+            $table->foreignId('id_kategori')->constrained('kategoris')->onDelete('cascade');
             $table->string('nama_barang');
-            $table->foreignId('pharmacy_id')->constrained('apoteks')->onDelete('cascade');
+            $table->foreignId('id_apotek')->constrained('apoteks')->onDelete('cascade');
             $table->text('deskripsi')->nullable();
             $table->string('gambar')->nullable();    
             $table->integer('harga');

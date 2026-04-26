@@ -1,20 +1,10 @@
-<div class="flex items-start max-md:flex-col">
-    <div class="me-10 w-full pb-4 md:w-[220px]">
-        <x-navlist aria-label="{{ __('Settings') }}">
-            <x-navlist-item href="{{ route('profile.edit') }}" wire:navigate>{{ __('Profile') }}</x-navlist-item>
-            <x-navlist-item href="{{ route('security.edit') }}" wire:navigate>{{ __('Security') }}</x-navlist-item>
-            <x-navlist-item href="{{ route('appearance.edit') }}" wire:navigate>{{ __('Appearance') }}</x-navlist-item>
-        </x-navlist>
+<div class="max-w-4xl mx-auto">
+    <div class="mb-6">
+        <h1 class="text-3xl font-bold text-gray-900 dark:text-white mb-2">{{ $heading ?? '' }}</h1>
+        <p class="text-lg text-gray-600 dark:text-gray-400">{{ $subheading ?? '' }}</p>
     </div>
 
-    <x-separator class="md:hidden" />
-
-    <div class="flex-1 self-stretch max-md:pt-6">
-        <x-heading>{{ $heading ?? '' }}</x-heading>
-        <x-subheading>{{ $subheading ?? '' }}</x-subheading>
-
-        <div class="mt-5 w-full max-w-lg">
-            {{ $slot }}
-        </div>
+    <div class="w-full">
+        {{ $slot }}
     </div>
 </div>
