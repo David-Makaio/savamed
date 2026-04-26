@@ -55,3 +55,7 @@ Ikuti langkah-langkah berikut untuk menjalankan proyek di komputer lokal Anda:
 5. Jalankan Aplikasi
    ```
    php artisan serve
+
+
+## Contoh Data
+Untuk memudahkan anda mengetes fitur fitur dalam website ini, saya memberikan contoh data yang dapat digunakan untuk mengisi form form pada website saya, filenya terletak di folder examples/
